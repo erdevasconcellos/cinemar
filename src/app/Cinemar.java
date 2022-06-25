@@ -4,21 +4,22 @@ import model.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 
 public class Cinemar {
 
     public static void main(String[] args) {
 
-        Sala sala = new Sala("Sala 1", false, 10, 10);
-        Pelicula peli = new Pelicula("Rambo", "Sylvester Stallone", Pelicula.PM16, 115);
-        Funcion funcion = new Funcion(sala, peli, Date.valueOf("2022-06-20"), Time.valueOf("22:00:00"), 2000.0f);
+        Sala sala = new Sala("Sala 1", 10, 10);
+
+        ArrayList<Actor> reparto = new ArrayList<>();
+        reparto.add( new Actor(1, "Sylvester Stallone") );
+
+        Pelicula peli = new Pelicula("Rambo", reparto , Pelicula.PM16, 115);
+        Funcion funcion = new Funcion(sala, peli, true, Date.valueOf("2022-06-25"), Time.valueOf("22:00:00"), 2000.0f);
         Cliente cliente = new Cliente("32043649", "López", "Pedro", Date.valueOf("1986-12-03"), false);
 
-
-
-        for ( Butaca butaca : funcion.getSala().getButacas() ) {
-            print(butaca.toString()+"\n");
-        }
+        print("Descuento de hoy: " + funcion.getDescuento() + "%" );
 
     }
 

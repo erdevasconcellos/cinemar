@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Pelicula {
@@ -9,11 +10,11 @@ public class Pelicula {
     public static String PM18 = "PM18";
 
     private String titulo;
-    private String reparto;
+    private ArrayList<Actor> reparto;
     private String clasificacion;
     private int duracion;
 
-    public Pelicula(String titulo, String reparto, String clasificacion, int duracion) {
+    public Pelicula(String titulo, ArrayList<Actor> reparto, String clasificacion, int duracion) {
         this.titulo = titulo;
         this.reparto = reparto;
         this.clasificacion = clasificacion;
@@ -28,11 +29,11 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public String getReparto() {
+    public ArrayList<Actor> getReparto() {
         return reparto;
     }
 
-    public void setReparto(String reparto) {
+    public void setReparto(ArrayList<Actor> reparto) {
         this.reparto = reparto;
     }
 
@@ -54,6 +55,6 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Título: "+titulo.toUpperCase(Locale.ROOT)+"\nReparto: "+reparto+"\nClasificación (Arg): "+clasificacion+"\nDuración: "+duracion+" minutos";
+        return "Título: "+titulo.toUpperCase(Locale.ROOT)+"\nReparto: "+reparto.toString()+"\nClasificación (Arg): "+clasificacion+"\nDuración: "+duracion+" minutos";
     }
 }

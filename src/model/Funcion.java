@@ -2,21 +2,24 @@ package model;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Calendar;
 
 public class Funcion {
     private Sala sala;
     private Pelicula pelicula;
+    private boolean is3D;
     private Date fecha;
     private Time hora;
     private Float precio;
+    private Descuentos desc;
 
-    public Funcion(Sala sala, Pelicula pelicula, Date fecha, Time hora, Float precio) {
+    public Funcion(Sala sala, Pelicula pelicula, boolean is3D, Date fecha, Time hora, Float precio) {
         this.sala = sala;
         this.pelicula = pelicula;
+        this.is3D = is3D;
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
+        this.desc = new Descuentos();
     }
 
     public Sala getSala() {
@@ -59,13 +62,8 @@ public class Funcion {
         this.precio = precio;
     }
 
-    public int getDescuento() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fecha);
-
-
-
-        return 0;
+    public float getDescuento() {
+        return desc.getDescuento(this.fecha);
     }
 
 }
