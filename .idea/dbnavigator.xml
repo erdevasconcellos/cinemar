@@ -29,7 +29,12 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="5a7b560f-a5df-4702-9b9c-003885b8f2e7">
-      <console name="Cinemar" type="STANDARD" schema="alfarcito" session="Main" />
+      <console name="Cinemar" type="STANDARD" schema="cinemar" session="Main"><![CDATA[create table clasificacion (
+    id int not null auto_increment,
+    cod varchar(6) not null,
+    descripcion varchar(150) not null,
+    primary key (id)
+);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -43,6 +48,9 @@
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/SQL/DDL.sql" connection-id="5a7b560f-a5df-4702-9b9c-003885b8f2e7" session-id="MAIN" current-schema="alfarcito" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -63,7 +71,9 @@
     <diagnostics-history />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="GENERIC" interface-id="91378783-8a8a-4d0d-b159-b61ab014b49c" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -465,7 +475,9 @@
         <prompt-execution value="false" />
       </statement-execution>
       <script-execution>
-        <command-line-interfaces />
+        <command-line-interfaces>
+          <value id="91378783-8a8a-4d0d-b159-b61ab014b49c" name="MariaDB" executable-path="$PROJECT_DIR$/../../../../../Archivos de Programa/MariaDB 10.6/bin/mysql.exe" database-type="GENERIC" />
+        </command-line-interfaces>
         <execution-timeout value="300" />
       </script-execution>
       <method-execution>
