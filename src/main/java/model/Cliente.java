@@ -1,21 +1,34 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 public class Cliente {
+    private int id;
     private String dni;
     private String apellido;
     private String nombre;
     private Date fch_nac;
-    private boolean discountCard;
+    private String tarj_desc;
+    private String email;
+    private String pwd;
 
-    public Cliente(String dni, String apellido, String nombre, Date fch_nac, boolean discountCard) {
+    public Cliente(int id, String dni, String apellido, String nombre, Date fch_nac, String tarj_desc, String email, String pwd) {
+        this.id = id;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fch_nac = fch_nac;
-        this.discountCard = discountCard;
+        this.tarj_desc = tarj_desc;
+        this.email = email;
+        this.pwd = pwd;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDni() {
@@ -50,14 +63,31 @@ public class Cliente {
         this.fch_nac = fch_nac;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente: "+apellido+", "+nombre;
+    public String getTarj_desc() {
+        return tarj_desc;
     }
 
-    /*
-    public boolean getTarjDescuento(ArrayList<Reserva> r) {
-
+    public void setTarj_desc(String tarj_desc) {
+        this.tarj_desc = tarj_desc;
     }
-     */
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public boolean tarjDescuento() {
+        return tarj_desc.compareTo("y") == 0;
+    }
 }

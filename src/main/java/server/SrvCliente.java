@@ -1,4 +1,4 @@
-package app;
+package server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,24 +6,16 @@ import dataaccess.CRUDCliente;
 import model.Cliente;
 import model.StdResponse;
 import repo.CinemarDB;
-import server.SrvCliente;
 
-import static app.SystemOut.print;
 import static spark.Spark.*;
+import static spark.Spark.delete;
 
-public class Cinemar {
-    /*
+public class SrvCliente {
+
     static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     static CinemarDB cinemarDB;
-     */
 
-    public static void main(String[] args) {
-
-        port(8080);
-
-        SrvCliente.listen();
-
-        /*
+    public static void listen() {
         try {
             cinemarDB = new CinemarDB();
             CRUDCliente.assignDatabase(cinemarDB);
@@ -91,9 +83,6 @@ public class Cinemar {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-         */
-        print("Server is running...", false);
-
     }
+
 }
