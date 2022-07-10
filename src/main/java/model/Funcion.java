@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Funcion {
+    private int id;
     private Sala sala;
     private Pelicula pelicula;
     private boolean is3D;
@@ -20,6 +21,14 @@ public class Funcion {
         this.hora = hora;
         this.precio = precio;
         this.desc = new Descuentos();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Sala getSala() {

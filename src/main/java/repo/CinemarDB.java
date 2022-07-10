@@ -5,7 +5,6 @@ import java.sql.*;
 public class CinemarDB {
     private Connection connection;
     private Statement statement;
-    private ResultSet resultSet;
 
     private static final String host = "localhost";
     private static final String database = "cinemar";
@@ -31,23 +30,40 @@ public class CinemarDB {
         return connection;
     }
 
-    public void setConnection(Connection connection) {
-        this.connection = connection;
-    }
-
     public Statement getStatement() {
         return statement;
     }
 
-    public void setStatement(Statement statement) {
-        this.statement = statement;
+    public void beginTransaction() {
+        try {
+            this.getConnection().setAutoCommit(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public ResultSet getResultSet() {
-        return resultSet;
+    public void autoCommit() {
+        try {
+            this.getConnection().setAutoCommit(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setResultSet(ResultSet resultSet) {
-        this.resultSet = resultSet;
+    public void rollback() {
+        try {
+            this.getConnection().rollback();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public void commit() {
+        try {
+            this.getConnection().commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

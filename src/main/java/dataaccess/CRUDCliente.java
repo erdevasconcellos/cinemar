@@ -1,6 +1,5 @@
 package dataaccess;
 
-import app.SystemOut;
 import model.Cliente;
 import repo.CinemarDB;
 
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 
 public class CRUDCliente {
 
-    private static CinemarDB database = null;
+    private static CinemarDB db = null;
 
     private static final String ID = "id";
     private static final String DNI = "dni";
@@ -21,15 +20,15 @@ public class CRUDCliente {
     private static final String EMAIL = "email";
     private static final String PWD = "pwd";
 
-    public static void assignDatabase(CinemarDB db) {
-        database = db;
+    public static void assignDatabase(CinemarDB cinemarDB) {
+        db = cinemarDB;
     }
 
     public static void insert(Cliente cliente) throws SQLException {
 
-        database.getConnection().setAutoCommit(false);
+        db.beginTransaction();
 
-        PreparedStatement statement = database.getConnection().prepareStatement(
+        PreparedStatement statement = db.getConnection().prepareStatement(
                 "insert into cliente (dni, apellido, nombre, fch_nac, tarj_desc, email, pwd) value (?, ?, ?, ?, ?, ?, ?)");
         statement.setString(1, cliente.getDni());
         statement.setString(2, cliente.getApellido());
@@ -40,16 +39,17 @@ public class CRUDCliente {
         statement.setString(7, cliente.getPwd());
         statement.executeUpdate();
 
-        database.getConnection().commit();
+        db.commit();
     }
 
     public static Cliente get(int idCliente) throws SQLException {
-        database.getConnection().setAutoCommit(false);
+        db.beginTransaction();
 
-        PreparedStatement statement = database.getConnection().prepareStatement(
+        PreparedStatement statement = db.getConnection().prepareStatement(
                                         "select * from cliente where id = ?;");
         statement.setInt(1, idCliente);
         ResultSet resultSet = statement.executeQuery();
+        db.commit();
 
         if (resultSet.next()) {
             return new Cliente(
@@ -68,9 +68,9 @@ public class CRUDCliente {
     }
 
     public static boolean update(Cliente cliente) throws SQLException {
-        database.getConnection().setAutoCommit(false);
+        db.beginTransaction();
 
-        PreparedStatement statement = database.getConnection().prepareStatement(
+        PreparedStatement statement = db.getConnection().prepareStatement(
                 "update cliente set dni=?, apellido=?, nombre=?, fch_nac=?, tarj_desc=?, email=?, pwd=? where id=?;");
 
         statement.setString(1, cliente.getDni());
@@ -83,23 +83,22 @@ public class CRUDCliente {
         statement.setInt(8, cliente.getId());
 
         int affrows = statement.executeUpdate();
-        database.getConnection().commit();
+        db.commit();
 
         return (affrows == 1);
     }
 
     public static boolean delete(int idCliente) throws SQLException {
-        database.getConnection().setAutoCommit(false);
-        PreparedStatement statement = database.getConnection().prepareStatement(
-                "delete from cliente where id=?;");
-        statement.setInt(1, idCliente);
-        int delRows = statement.executeUpdate();
-        database.getConnection().commit();
-
-        SystemOut.print("Eliminando usuario con id="+idCliente+"\n", false);
-        SystemOut.print("Resultado: " + (delRows == 1), false);
-
-        return (delRows == 1);
+        try {
+            db.beginTransaction();
+            PreparedStatement statement = db.getConnection().prepareStatement("delete from cliente where id=?;");
+            statement.setInt(1, idCliente);
+            int delRows = statement.executeUpdate();
+            db.commit();
+            return (delRows == 1);
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
 }

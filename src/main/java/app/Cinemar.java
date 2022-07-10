@@ -1,99 +1,41 @@
 package app;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import dataaccess.CRUDCliente;
-import model.Cliente;
-import model.StdResponse;
+import dataaccess.*;
 import repo.CinemarDB;
-import server.SrvCliente;
+import server.*;
+
+import java.sql.SQLException;
 
 import static app.SystemOut.print;
 import static spark.Spark.*;
 
 public class Cinemar {
-    /*
-    static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-    static CinemarDB cinemarDB;
-     */
 
-    public static void main(String[] args) {
-
-        port(8080);
-
-        SrvCliente.listen();
-
-        /*
+    public static void main(String[] args) throws SQLException {
         try {
-            cinemarDB = new CinemarDB();
-            CRUDCliente.assignDatabase(cinemarDB);
+            CinemarDB cinemarDB = new CinemarDB();
 
-            //Clientes
-            post("/cliente/register", (request, response) -> {
-                response.type("application/json");
-                try {
-                    Cliente cliente = gson.fromJson(request.body(), Cliente.class);
-                    CRUDCliente.insert(cliente);
-                    return gson.toJson( new StdResponse(0, StdResponse.OK, "Usuario registrado."));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo registrar el usuario."));
-                }
-            });
+            assignDB(cinemarDB);
+            port(8080);
 
-            get("/cliente/get/:id", ((request, response) -> {
-                response.type("application/json");
-                try {
-                    Cliente cliente = CRUDCliente.get( Integer.parseInt( request.params(":id") ) );
+            SrvCliente.listen();
+            SrvPelicula.listen();
+            SrvActor.listen();
+            SrvSala.listen();
+            SrvClasificacion.listen();
 
-                    if (cliente != null) {
-                        return gson.toJson(cliente);
-                    } else {
-                        return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Usuario inexistente."));
-                    }
-
-                } catch (Exception e) {
-                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Usuario inexistente."));
-                }
-
-            }));
-
-            put("/cliente/update", ((request, response) -> {
-                response.type("application/json");
-
-                try {
-                    Cliente cliente = gson.fromJson(request.body(), Cliente.class);
-
-                    if ( CRUDCliente.update(cliente) ) {
-                        return gson.toJson( new StdResponse(0, StdResponse.OK, "Usuario actualizado.")) ;
-                    } else {
-                        return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo actualizar el usuario.") );
-                    }
-                } catch (Exception e) {
-                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Se produjo un error.") );
-                }
-            }));
-
-            delete("cliente/delete/:id", ((request, response) -> {
-                response.type("application/json");
-
-                try {
-                    if ( CRUDCliente.delete( Integer.parseInt( request.params(":id") ) ) ) {
-                        return gson.toJson( new StdResponse(0, StdResponse.OK, "Usuario eliminado.")) ;
-                    } else {
-                        return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo eliminar el usuario.") );
-                    }
-                } catch (Exception e) {
-                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Se produjo un error.") );
-                }
-            }));
-
+            print("Server is running...", false);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-         */
-        print("Server is running...", false);
-
+    public static void assignDB(CinemarDB cinemarDB) {
+        CRUDCliente.assignDatabase(cinemarDB);
+        CRUDPelicula.assignDatabase(cinemarDB);
+        CRUDClasificacion.assignDatabase(cinemarDB);
+        CRUDReparto.assignDatabase(cinemarDB);
+        CRUDActor.assignDatabase(cinemarDB);
+        CRUDSala.assignDatabase(cinemarDB);
     }
 }

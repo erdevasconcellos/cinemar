@@ -5,24 +5,18 @@ import com.google.gson.GsonBuilder;
 import dataaccess.CRUDCliente;
 import model.Cliente;
 import model.StdResponse;
-import repo.CinemarDB;
+import repo.MimeTypes;
 
 import static spark.Spark.*;
-import static spark.Spark.delete;
 
 public class SrvCliente {
 
     static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-    static CinemarDB cinemarDB;
 
     public static void listen() {
         try {
-            cinemarDB = new CinemarDB();
-            CRUDCliente.assignDatabase(cinemarDB);
-
-            //Clientes
             post("/cliente/register", (request, response) -> {
-                response.type("application/json");
+                response.type(MimeTypes.JSON);
                 try {
                     Cliente cliente = gson.fromJson(request.body(), Cliente.class);
                     CRUDCliente.insert(cliente);
@@ -34,7 +28,7 @@ public class SrvCliente {
             });
 
             get("/cliente/get/:id", ((request, response) -> {
-                response.type("application/json");
+                response.type(MimeTypes.JSON);
                 try {
                     Cliente cliente = CRUDCliente.get( Integer.parseInt( request.params(":id") ) );
 
@@ -51,7 +45,7 @@ public class SrvCliente {
             }));
 
             put("/cliente/update", ((request, response) -> {
-                response.type("application/json");
+                response.type(MimeTypes.JSON);
 
                 try {
                     Cliente cliente = gson.fromJson(request.body(), Cliente.class);
@@ -66,11 +60,13 @@ public class SrvCliente {
                 }
             }));
 
-            delete("cliente/delete/:id", ((request, response) -> {
-                response.type("application/json");
+            delete("cliente/delete", ((request, response) -> {
+                response.type(MimeTypes.JSON);
 
                 try {
-                    if ( CRUDCliente.delete( Integer.parseInt( request.params(":id") ) ) ) {
+                    Cliente cliente = gson.fromJson( request.body(), Cliente.class );
+
+                    if ( CRUDCliente.delete( cliente.getId() ) ) {
                         return gson.toJson( new StdResponse(0, StdResponse.OK, "Usuario eliminado.")) ;
                     } else {
                         return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo eliminar el usuario.") );
@@ -78,6 +74,12 @@ public class SrvCliente {
                 } catch (Exception e) {
                     return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Se produjo un error.") );
                 }
+            }));
+
+            post("/login", ((request, response) -> {
+                response.type(MimeTypes.JSON);
+
+                return "{}";
             }));
 
         } catch (Exception e) {

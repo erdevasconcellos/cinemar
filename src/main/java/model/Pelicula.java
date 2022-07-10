@@ -4,21 +4,27 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class Pelicula {
-    public static String ATP = "ATP";
-    public static String PM13 = "PM13";
-    public static String PM16 = "PM16";
-    public static String PM18 = "PM18";
 
+    private int id;
     private String titulo;
     private ArrayList<Actor> reparto;
-    private String clasificacion;
+    private Clasificacion clasificacion;
     private int duracion;
 
-    public Pelicula(String titulo, ArrayList<Actor> reparto, String clasificacion, int duracion) {
+    public Pelicula(int id, String titulo, ArrayList<Actor> reparto, Clasificacion clasificacion, int duracion) {
+        this.id = id;
         this.titulo = titulo;
         this.reparto = reparto;
         this.clasificacion = clasificacion;
         this.duracion = duracion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -37,11 +43,11 @@ public class Pelicula {
         this.reparto = reparto;
     }
 
-    public String getClasificacion() {
+    public Clasificacion getClasificacion() {
         return clasificacion;
     }
 
-    public void setClasificacion(String clasificacion) {
+    public void setClasificacion(Clasificacion clasificacion) {
         this.clasificacion = clasificacion;
     }
 
@@ -53,8 +59,4 @@ public class Pelicula {
         this.duracion = duracion;
     }
 
-    @Override
-    public String toString() {
-        return "Título: "+titulo.toUpperCase(Locale.ROOT)+"\nReparto: "+reparto.toString()+"\nClasificación (Arg): "+clasificacion+"\nDuración: "+duracion+" minutos";
-    }
 }

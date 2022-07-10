@@ -1510,6 +1510,8 @@
     </column>
     <foreign-key id="400" parent="344" name="fk_pelicula">
       <ColNames>id_pelicula</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>pelicula</RefTableName>
     </foreign-key>
