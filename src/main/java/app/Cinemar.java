@@ -23,6 +23,8 @@ public class Cinemar {
             SrvActor.listen();
             SrvSala.listen();
             SrvClasificacion.listen();
+            SrvMedioPago.listen();
+            SrvFuncion.listen();
 
             print("Server is running...", false);
         } catch (Exception e) {
@@ -37,5 +39,8 @@ public class Cinemar {
         CRUDReparto.assignDatabase(cinemarDB);
         CRUDActor.assignDatabase(cinemarDB);
         CRUDSala.assignDatabase(cinemarDB);
+        CRUDMedioPago.assignDatabase(cinemarDB);
+        CRUDFuncion.assignDatabase(cinemarDB);
+        Session.assignDatabase(cinemarDB);
     }
 }

@@ -2,7 +2,9 @@ package server;
 
 import com.google.gson.Gson;
 import dataaccess.CRUDClasificacion;
+import dataaccess.CRUDPelicula;
 import model.Clasificacion;
+import model.Pelicula;
 import model.StdResponse;
 import repo.MimeTypes;
 
@@ -77,6 +79,23 @@ public class SrvClasificacion {
                     return gson.toJson(new StdResponse(1, StdResponse.ERROR, "Error al actualizar la clasificación."));
                 }
 
+            });
+
+            delete("/clasificacion/delete", (request, response) -> {
+                response.type(MimeTypes.JSON);
+
+                try {
+                    Clasificacion clasif = gson.fromJson( request.body(), Clasificacion.class );
+
+                    if (CRUDClasificacion.delete( clasif )) {
+                        return gson.toJson( new StdResponse(0, StdResponse.OK, "Clasificación eliminada."));
+                    } else {
+                        return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo eliminar la clasificación."));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo eliminar la clasificación."));
+                }
             });
 
         } catch (Exception e) {

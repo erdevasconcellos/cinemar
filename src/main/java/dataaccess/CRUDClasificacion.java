@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static app.SystemOut.print;
+
 public class CRUDClasificacion {
 
     private static CinemarDB db = null;
@@ -87,6 +89,13 @@ public class CRUDClasificacion {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static boolean delete(Clasificacion clasificacion) throws SQLException {
+        db.autoCommit();
+        int delClasif = db.getStatement().executeUpdate("delete from clasificacion where id="+clasificacion.getId());
+
+        return (delClasif == 1);
     }
 
     static class Columns {

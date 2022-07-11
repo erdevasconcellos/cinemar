@@ -3,8 +3,11 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dataaccess.CRUDCliente;
+import dataaccess.Session;
 import model.Cliente;
 import model.StdResponse;
+import repo.Credencial;
+import repo.LoginRequest;
 import repo.MimeTypes;
 
 import static spark.Spark.*;
@@ -24,6 +27,27 @@ public class SrvCliente {
                 } catch (Exception e) {
                     e.printStackTrace();
                     return gson.toJson( new StdResponse(1, StdResponse.ERROR, "No se pudo registrar el usuario."));
+                }
+            });
+
+            post("/login", (request, response) -> {
+                response.type(MimeTypes.JSON);
+
+                try {
+                    LoginRequest loginRequest = gson.fromJson( request.body(), LoginRequest.class );
+                    Credencial credencial = Session.login( loginRequest );
+
+                    if (credencial != null) {
+                        request.session(true);
+                        credencial.setToken( request.session().id() );
+                        return gson.toJson( credencial );
+                    } else {
+                        return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Usuario o contraseña incorrectos."));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return gson.toJson( new StdResponse(1, StdResponse.ERROR, "Error en la petición."));
                 }
             });
 

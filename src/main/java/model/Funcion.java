@@ -1,26 +1,22 @@
 package model;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Funcion {
     private int id;
     private Sala sala;
     private Pelicula pelicula;
     private boolean is3D;
-    private Date fecha;
-    private Time hora;
-    private Float precio;
-    private Descuentos desc;
+    private String fecha;
+    private String hora;
+    private float precio;
 
-    public Funcion(Sala sala, Pelicula pelicula, boolean is3D, Date fecha, Time hora, Float precio) {
+    public Funcion(int id, Sala sala, Pelicula pelicula, boolean is3D, String fecha, String hora, float precio) {
+        this.id = id;
         this.sala = sala;
         this.pelicula = pelicula;
         this.is3D = is3D;
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
-        this.desc = new Descuentos();
     }
 
     public int getId() {
@@ -47,32 +43,35 @@ public class Funcion {
         this.pelicula = pelicula;
     }
 
-    public Date getFecha() {
+    public boolean is3D() {
+        return is3D;
+    }
+
+    public void setIs3D(boolean is3D) {
+        this.is3D = is3D;
+    }
+
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    public Float getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Float precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
-
-    public float getDescuento() {
-        return desc.getDescuento(this.fecha);
-    }
-
 }

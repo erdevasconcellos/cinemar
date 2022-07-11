@@ -1243,402 +1243,355 @@
       <Host>vasco-lenovo</Host>
     </user>
     <table id="336" parent="325" name="actor"/>
-    <table id="337" parent="325" name="butaca"/>
-    <table id="338" parent="325" name="clasificacion"/>
-    <table id="339" parent="325" name="cliente"/>
-    <table id="340" parent="325" name="descuento"/>
-    <table id="341" parent="325" name="funcion"/>
-    <table id="342" parent="325" name="medio_pago"/>
-    <table id="343" parent="325" name="pelicula"/>
-    <table id="344" parent="325" name="reparto"/>
-    <table id="345" parent="325" name="reserva"/>
-    <table id="346" parent="325" name="sala"/>
-    <table id="347" parent="325" name="test"/>
-    <column id="348" parent="336" name="id">
+    <table id="337" parent="325" name="clasificacion"/>
+    <table id="338" parent="325" name="cliente"/>
+    <table id="339" parent="325" name="descuento"/>
+    <table id="340" parent="325" name="funcion"/>
+    <table id="341" parent="325" name="medio_pago"/>
+    <table id="342" parent="325" name="pelicula"/>
+    <table id="343" parent="325" name="reparto"/>
+    <table id="344" parent="325" name="reserva"/>
+    <table id="345" parent="325" name="sala"/>
+    <table id="346" parent="325" name="test"/>
+    <column id="347" parent="336" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="349" parent="336" name="nombre">
+    <column id="348" parent="336" name="nombre">
       <DataType>varchar(50)|0s</DataType>
       <Position>2</Position>
     </column>
-    <key id="350" parent="336" name="PRIMARY">
+    <key id="349" parent="336" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="351" parent="337" name="id">
+    <column id="350" parent="337" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="352" parent="337" name="id_sala">
-      <DataType>int(11)|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="353" parent="337" name="fila">
-      <DataType>varchar(2)|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="354" parent="337" name="num">
-      <DataType>int(11)|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <foreign-key id="355" parent="337" name="fk_sala">
-      <ColNames>id_sala</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>sala</RefTableName>
-    </foreign-key>
-    <index id="356" parent="337" name="fk_sala">
-      <ColNames>id_sala</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="357" parent="337" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <column id="358" parent="338" name="id">
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="359" parent="338" name="cod">
+    <column id="351" parent="337" name="cod">
       <DataType>varchar(6)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="360" parent="338" name="descripcion">
+    <column id="352" parent="337" name="descripcion">
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="361" parent="338" name="PRIMARY">
+    <key id="353" parent="337" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="362" parent="339" name="id">
+    <column id="354" parent="338" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="363" parent="339" name="dni">
+    <column id="355" parent="338" name="dni">
       <DataType>varchar(9)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="364" parent="339" name="apellido">
+    <column id="356" parent="338" name="apellido">
       <Collation>utf8mb3_spanish_ci</Collation>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="365" parent="339" name="nombre">
+    <column id="357" parent="338" name="nombre">
       <Collation>utf8mb3_spanish_ci</Collation>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="366" parent="339" name="fch_nac">
+    <column id="358" parent="338" name="fch_nac">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="367" parent="339" name="tarj_desc">
+    <column id="359" parent="338" name="tarj_desc">
       <DataType>char(1)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="368" parent="339" name="email">
+    <column id="360" parent="338" name="email">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="369" parent="339" name="pwd">
+    <column id="361" parent="338" name="pwd">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <key id="370" parent="339" name="PRIMARY">
+    <key id="362" parent="338" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="371" parent="340" name="dia">
+    <column id="363" parent="339" name="dia">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="372" parent="340" name="descuento">
+    <column id="364" parent="339" name="descuento">
       <DataType>float|0s</DataType>
       <Position>2</Position>
     </column>
-    <key id="373" parent="340" name="PRIMARY">
+    <key id="365" parent="339" name="PRIMARY">
       <ColNames>dia</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="374" parent="341" name="id">
+    <column id="366" parent="340" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="375" parent="341" name="id_sala">
+    <column id="367" parent="340" name="id_sala">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="376" parent="341" name="id_pelicula">
+    <column id="368" parent="340" name="id_pelicula">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="377" parent="341" name="is3d">
+    <column id="369" parent="340" name="is3d">
       <DataType>enum(&apos;y&apos;, &apos;n&apos;)|0e</DataType>
       <Position>4</Position>
     </column>
-    <column id="378" parent="341" name="fecha">
+    <column id="370" parent="340" name="fecha">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="379" parent="341" name="precio">
-      <DataType>float|0s</DataType>
+    <column id="371" parent="340" name="hora">
+      <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="380" parent="341" name="id_descuento">
-      <DataType>int(11)|0s</DataType>
+    <column id="372" parent="340" name="precio">
+      <DataType>float|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <foreign-key id="381" parent="341" name="funcion_ibfk_1">
+    <foreign-key id="373" parent="340" name="funcion_ibfk_1">
       <ColNames>id_sala</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>sala</RefTableName>
     </foreign-key>
-    <foreign-key id="382" parent="341" name="funcion_ibfk_2">
+    <foreign-key id="374" parent="340" name="funcion_ibfk_2">
       <ColNames>id_pelicula</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>pelicula</RefTableName>
     </foreign-key>
-    <foreign-key id="383" parent="341" name="funcion_ibfk_3">
-      <ColNames>id_descuento</ColNames>
-      <RefColNames>dia</RefColNames>
-      <RefTableName>descuento</RefTableName>
-    </foreign-key>
-    <index id="384" parent="341" name="id_sala">
+    <index id="375" parent="340" name="id_sala">
       <ColNames>id_sala</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="385" parent="341" name="id_pelicula">
+    <index id="376" parent="340" name="id_pelicula">
       <ColNames>id_pelicula</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="386" parent="341" name="id_descuento">
-      <ColNames>id_descuento</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="387" parent="341" name="PRIMARY">
+    <key id="377" parent="340" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="388" parent="342" name="id">
+    <column id="378" parent="341" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="389" parent="342" name="nombre">
+    <column id="379" parent="341" name="nombre">
       <DataType>varchar(25)|0s</DataType>
       <Position>2</Position>
     </column>
-    <key id="390" parent="342" name="PRIMARY">
+    <key id="380" parent="341" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="391" parent="343" name="id">
+    <column id="381" parent="342" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="392" parent="343" name="titulo">
+    <column id="382" parent="342" name="titulo">
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="393" parent="343" name="id_clasificacion">
+    <column id="383" parent="342" name="id_clasificacion">
       <DataType>int(11)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="394" parent="343" name="duracion">
+    <column id="384" parent="342" name="duracion">
       <DataType>int(11)|0s</DataType>
       <Position>4</Position>
     </column>
-    <foreign-key id="395" parent="343" name="fk_clasif">
+    <foreign-key id="385" parent="342" name="fk_clasif">
       <ColNames>id_clasificacion</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>clasificacion</RefTableName>
     </foreign-key>
-    <index id="396" parent="343" name="fk_clasif">
+    <index id="386" parent="342" name="fk_clasif">
       <ColNames>id_clasificacion</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="397" parent="343" name="PRIMARY">
+    <key id="387" parent="342" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="398" parent="344" name="id_pelicula">
+    <column id="388" parent="343" name="id_pelicula">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="399" parent="344" name="id_actor">
+    <column id="389" parent="343" name="id_actor">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <foreign-key id="400" parent="344" name="fk_pelicula">
+    <foreign-key id="390" parent="343" name="fk_pelicula">
       <ColNames>id_pelicula</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>pelicula</RefTableName>
     </foreign-key>
-    <foreign-key id="401" parent="344" name="fk_actor">
+    <foreign-key id="391" parent="343" name="fk_actor">
       <ColNames>id_actor</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>actor</RefTableName>
     </foreign-key>
-    <index id="402" parent="344" name="fk_actor">
+    <index id="392" parent="343" name="fk_actor">
       <ColNames>id_actor</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="403" parent="344" name="PRIMARY">
+    <key id="393" parent="343" name="PRIMARY">
       <ColNames>id_pelicula
 id_actor</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="404" parent="345" name="id">
+    <column id="394" parent="344" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="405" parent="345" name="id_funcion">
+    <column id="395" parent="344" name="id_funcion">
       <DataType>int(11)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="406" parent="345" name="id_cliente">
+    <column id="396" parent="344" name="id_cliente">
       <DataType>int(11)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="407" parent="345" name="id_butaca">
+    <column id="397" parent="344" name="butaca">
       <DataType>int(11)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="408" parent="345" name="fecha">
+    <column id="398" parent="344" name="fecha">
       <DataType>datetime|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="409" parent="345" name="pago">
+    <column id="399" parent="344" name="pago">
       <DataType>float|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="410" parent="345" name="id_medio_pago">
+    <column id="400" parent="344" name="id_medio_pago">
       <DataType>int(11)|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="411" parent="345" name="fk_res_funcion">
+    <foreign-key id="401" parent="344" name="fk_res_funcion">
       <ColNames>id_funcion</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>funcion</RefTableName>
     </foreign-key>
-    <foreign-key id="412" parent="345" name="fk_res_cliente">
+    <foreign-key id="402" parent="344" name="fk_res_cliente">
       <ColNames>id_cliente</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>cliente</RefTableName>
     </foreign-key>
-    <foreign-key id="413" parent="345" name="fk_res_butaca">
-      <ColNames>id_butaca</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>butaca</RefTableName>
-    </foreign-key>
-    <foreign-key id="414" parent="345" name="fk_res_mediopago">
+    <foreign-key id="403" parent="344" name="fk_res_mediopago">
       <ColNames>id_medio_pago</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>medio_pago</RefTableName>
     </foreign-key>
-    <index id="415" parent="345" name="id_funcion">
+    <index id="404" parent="344" name="id_funcion">
       <ColNames>id_funcion
-id_butaca</ColNames>
+butaca</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="416" parent="345" name="fk_res_cliente">
+    <index id="405" parent="344" name="fk_res_cliente">
       <ColNames>id_cliente</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="417" parent="345" name="fk_res_butaca">
-      <ColNames>id_butaca</ColNames>
+    <index id="406" parent="344" name="fk_res_butaca">
+      <ColNames>butaca</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="418" parent="345" name="fk_res_mediopago">
+    <index id="407" parent="344" name="fk_res_mediopago">
       <ColNames>id_medio_pago</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="419" parent="345" name="PRIMARY">
+    <key id="408" parent="344" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="420" parent="345" name="id_funcion">
+    <key id="409" parent="344" name="id_funcion">
       <ColNames>id_funcion
-id_butaca</ColNames>
+butaca</ColNames>
       <UnderlyingIndexName>id_funcion</UnderlyingIndexName>
     </key>
-    <column id="421" parent="346" name="id">
+    <column id="410" parent="345" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="422" parent="346" name="nombre">
+    <column id="411" parent="345" name="nombre">
       <DataType>varchar(25)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="423" parent="346" name="capacidad">
+    <column id="412" parent="345" name="capacidad">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="424" parent="346" name="PRIMARY">
+    <key id="413" parent="345" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="425" parent="347" name="id">
+    <column id="414" parent="346" name="id">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="426" parent="347" name="valor">
+    <column id="415" parent="346" name="valor">
       <DataType>varchar(20)|0s</DataType>
       <Position>2</Position>
     </column>
-    <key id="427" parent="347" name="PRIMARY">
+    <key id="416" parent="346" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

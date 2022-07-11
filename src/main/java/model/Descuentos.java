@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +15,13 @@ public class Descuentos {
     }
 
     public void loadDefaultValues() {
-        descuentos.put(1, 10f); //Domingo
-        descuentos.put(2, 20f); //Lunes
-        descuentos.put(3, 15f); //Martes
-        descuentos.put(4, 20f); //Miércoles
-        descuentos.put(5, 15f); //Jueves
-        descuentos.put(6, 10f); //Viernes
-        descuentos.put(7, 10f); //Sábado
+        descuentos.put(1, 0.1f); //Domingo
+        descuentos.put(2, 0.2f); //Lunes
+        descuentos.put(3, 0.15f); //Martes
+        descuentos.put(4, 0.2f); //Miércoles
+        descuentos.put(5, 0.15f); //Jueves
+        descuentos.put(6, 0.1f); //Viernes
+        descuentos.put(7, 0.1f); //Sábado
     }
 
     public float getDescuento(Date fecha) {
