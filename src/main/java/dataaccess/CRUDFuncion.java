@@ -4,6 +4,9 @@ import model.Funcion;
 import repo.CinemarDB;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CRUDFuncion {
 
@@ -32,6 +35,28 @@ public class CRUDFuncion {
             db.rollback();
             return false;
         }
+    }
+
+    public static ArrayList<Funcion> getAll() throws SQLException {
+        ArrayList<Funcion> funciones = new ArrayList<>();
+
+        ResultSet rs = db.getStatement().executeQuery("select * from funcion");
+
+        while (rs.next()) {
+            funciones.add(
+                    new Funcion(
+                            rs.getInt("id"),
+                            CRUDSala.get( rs.getInt("id_sala") ),
+                            CRUDPelicula.get( rs.getInt("id_pelicula") ),
+                            rs.getBoolean("is3d"),
+                            rs.getString("fecha"),
+                            rs.getString("hora"),
+                            rs.getFloat("precio")
+                    )
+            );
+        }
+
+        return funciones;
     }
 
 }

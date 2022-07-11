@@ -36,6 +36,12 @@ public class SrvFuncion {
                 }
             } );
 
+            get("/funcion/getall", (request, response) -> {
+                response.type(MimeTypes.JSON);
+
+                return gson.toJson( CRUDFuncion.getAll() );
+            });
+
         } catch (Exception e) {
             e.printStackTrace();
         }
